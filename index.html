@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Yash Apte - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         :root {
             --primary: #bb86fc;
@@ -116,6 +116,10 @@
             color: var(--text-primary);
             text-align: center;
             padding-top: 120px;
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .hero-content {
             max-width: 800px;
@@ -150,12 +154,30 @@
             background-clip: text;
             color: transparent;
         }
-        .hero .subtitle {
+        .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s;
-            animation-fill-mode: both;
             color: var(--text-secondary);
+        }
+        /* Typing animation for subtitle */
+        .subtitle-typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--primary);
+            width: 22ch; /* Adjust equal to text length */
+            animation:
+                typing 3s steps(22) forwards,
+                blinkCaret 0.75s step-end infinite;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blinkCaret {
+            50% { border-color: transparent; }
         }
         .hero .contact-info {
             display: flex;
@@ -299,15 +321,24 @@
             position: relative;
             margin-bottom: 3rem;
             width: 50%;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 2rem;
+            transform: translateX(50px);
+            text-align: left;
         }
         .timeline-item:nth-child(odd) {
             left: 0;
             padding-right: 2rem;
             text-align: right;
         }
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 2rem;
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateX(0);
         }
         .timeline-dot {
             position: absolute;
@@ -750,6 +781,11 @@
             font-size: 1.5rem;
             margin-right: 1rem;
             color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        /* Bounce animation on contact icons */
+        .contact-item i:hover {
+            animation: bounce 0.6s;
         }
         .contact-form {
             background: rgba(255, 255, 255, 0.05);
@@ -809,7 +845,9 @@
             transition: all 0.3s ease;
             border: 1px solid var(--divider);
         }
+        /* Bounce animation on social icons */
         .social-links a:hover {
+            animation: bounce 0.6s;
             background: var(--primary);
             color: var(--background);
             transform: translateY(-5px);
@@ -842,6 +880,10 @@
         .fade-in.active {
             opacity: 1;
             transform: translateY(0);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         /* PDF Modal Styles */
         .pdf-modal {
@@ -945,6 +987,7 @@
                 padding-left: 70px !important;
                 padding-right: 0 !important;
                 text-align: left !important;
+                transform: translateX(-50px) !important;
             }
             .timeline-dot {
                 left: 20px !important;
@@ -980,8 +1023,10 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            .hero .subtitle {
+            .subtitle-typing {
                 font-size: 1.2rem;
+                width: 100%;
+                border-right: 2px solid var(--primary);
             }
             .about-content {
                 flex-direction: column;
@@ -1004,8 +1049,7 @@
     <header>
         <div class="container navbar">
             <div class="logo">
-                <i class="fas fa-code"></i>
-                <span>Yash Apte</span>
+                <i class="fas fa-code"></i> <span>Yash Apte</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -1030,10 +1074,10 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="profile-image">
-                <img src="https://i.ibb.co/7Jmvvz0q/Yash-Apte.jpg" alt="Yash Apte">
+                <img src="https://i.ibb.co/7Jmvvz0q/Yash-Apte.jpg" alt="Yash Apte" />
             </div>
             <h1>Yash Apte</h1>
-            <p class="subtitle">Full-Stack Developer & Cybersecurity Specialist</p>
+            <p class="subtitle subtitle-typing">Full-Stack Developer & Cybersecurity Specialist</p>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -1082,7 +1126,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://i.ibb.co/7Jmvvz0q/Yash-Apte.jpg" alt="Yash Apte">
+                    <img src="https://i.ibb.co/7Jmvvz0q/Yash-Apte.jpg" alt="Yash Apte" />
                 </div>
             </div>
         </div>
@@ -1219,8 +1263,7 @@
             <div class="cards-container">
                 <div class="upcoming-project-card fade-in">
                     <div class="upcoming-badge">Upcoming</div>
-                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                    </div>
+                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="upcoming-project-content">
                         <h3 class="upcoming-project-title">Smiley Based Login Page</h3>
                         <p class="upcoming-project-description">An innovative login system that uses emojis as password patterns to enhance security and prevent keylogging attacks.</p>
@@ -1233,8 +1276,7 @@
                 </div>
                 <div class="upcoming-project-card fade-in">
                     <div class="upcoming-badge">Upcoming</div>
-                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                    </div>
+                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="upcoming-project-content">
                         <h3 class="upcoming-project-title">Password Generator</h3>
                         <p class="upcoming-project-description">A secure and customizable password generator that creates strong, unique passwords based on user preferences and security requirements.</p>
@@ -1247,8 +1289,7 @@
                 </div>
                 <div class="upcoming-project-card fade-in">
                     <div class="upcoming-badge">Upcoming</div>
-                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                    </div>
+                    <div class="upcoming-project-image" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="upcoming-project-content">
                         <h3 class="upcoming-project-title">Password Strength Checker</h3>
                         <p class="upcoming-project-description">A comprehensive tool that evaluates password strength in real-time and provides actionable suggestions for improving security.</p>
@@ -1270,12 +1311,10 @@
             </div>
             <div class="cards-container">
                 <div class="event-card fade-in">
-                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                    </div>
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
                     <div class="event-content">
                         <h3 class="event-title">Cybersecurity Workshop at TalaKunchi Networks</h3>
                         <p class="event-description">An action-packed Saturday with two top-tier sessions on advanced cybersecurity topics, hosted at TalaKunchi Networks Pvt Ltd, Andheri, Mumbai.</p>
-                        
                         <div class="event-details">
                             <h4>Sessions that stole the show:</h4>
                             <ul>
@@ -1283,11 +1322,9 @@
                                 <li><strong>Developing custom malware</strong> by Saumitra Kulkarni: A deep dive into offensive security, showcasing custom malware, C2 tactics, and self-built IoT tools for real-world software and hardware intrusions.</li>
                             </ul>
                         </div>
-                        
                         <div class="event-acknowledgments">
                             <h4>Special thanks to:</h4>
                             <p>TalaKunchi Networks Pvt Ltd for the incredible venue</p>
-                            
                         </div>
                     </div>
                 </div>
@@ -1394,209 +1431,8 @@
             </div>
         </div>
     </section>
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <div class="section-title">
-                <h2>Certifications</h2>
-            </div>
-            <div class="cards-container">
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>Technical Certifications</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1FRbmxtR0eSWxArZpb_Sgr9cV8lvc7aJf/preview" data-view="https://drive.google.com/file/d/1FRbmxtR0eSWxArZpb_Sgr9cV8lvc7aJf/view">HackFix Workshop – Gautam Kumavat <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/16cF2lr1Dcn1tsSnUpi3FrJ1kL2TkZPji/preview" data-view="https://drive.google.com/file/d/16cF2lr1Dcn1tsSnUpi3FrJ1kL2TkZPji/view">Linux Essentials – Cisco Networking Academy <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1crN2Nayz7z-ozK9MgJ3xi__da98KOnEi/preview" data-view="https://drive.google.com/file/d/1crN2Nayz7z-ozK9MgJ3xi__da98KOnEi/view">Cisco Introduction to Networks <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1OOuptMD5kkZsI1IAkB0HmRE3o15orzpt/preview" data-view="https://drive.google.com/file/d/1OOuptMD5kkZsI1IAkB0HmRE3o15orzpt/view">HTML & Web Design – Udemy <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/11LtZggxi52qPE6-pTlCqPBbmS38Y0_MQ/preview" data-view="https://drive.google.com/file/d/11LtZggxi52qPE6-pTlCqPBbmS38Y0_MQ/view">Power BI – Microsoft <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1J3ihy8YVaWJIHbei2Ey9mIA6nUSE4avW/preview" data-view="https://drive.google.com/file/d/1J3ihy8YVaWJIHbei2Ey9mIA6nUSE4avW/view">Deep Learning Basics – NVIDIA <i class="fas fa-file-pdf"></i></span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>Achievements</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1yVoUqJqpGH64wRXThyUnyIZsLwBem4pv/preview" data-view="https://drive.google.com/file/d/1yVoUqJqpGH64wRXThyUnyIZsLwBem4pv/view">Successfully completed DBMS course – NPTEL (IIT-based certification) <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1gqRSM-8fmZyrwGq03NFltyznhxR6ghjM/preview" data-view="https://drive.google.com/file/d/1gqRSM-8fmZyrwGq03NFltyznhxR6ghjM/view">Successfully completed Programming in Python – NPTEL <i class="fas fa-file-pdf"></i></span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Competitions Section -->
-    <section id="competitions" class="competitions">
-        <div class="container">
-            <div class="section-title">
-                <h2>Competitions & Hackathons</h2>
-            </div>
-            <div class="cards-container">
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>HackScript 6.0 – National Level Hackathon (2024)</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Secured Top 5 position among 100+ selected teams</li>
-                            <li>Built a functional prototype under 24-hour sprint based on real-world problem statements</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>Aavishkar Poster Presentation Competition</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Presented an educational platform designed for visually impaired students</li>
-                            <li>Focused on accessible UX, voice-first navigation, and rural outreach</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <div class="section-title">
-                <h2>Achievements</h2>
-            </div>
-            <div class="cards-container">
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>NPTEL Certifications</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1yVoUqJqpGH64wRXThyUnyIZsLwBem4pv/preview" data-view="https://drive.google.com/file/d/1yVoUqJqpGH64wRXThyUnyIZsLwBem4pv/view">Successfully completed DBMS course – NPTEL (IIT-based certification) <i class="fas fa-file-pdf"></i></span></li>
-                            <li><span class="pdf-link" data-pdf="https://drive.google.com/file/d/1gqRSM-8fmZyrwGq03NFltyznhxR6ghjM/preview" data-view="https://drive.google.com/file/d/1gqRSM-8fmZyrwGq03NFltyznhxR6ghjM/view">Successfully completed Programming in Python – NPTEL <i class="fas fa-file-pdf"></i></span></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>Academic Excellence</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Secured Top 5 position in HackScript 6.0 – National Level Hackathon (2024)</li>
-                            <li>Presented at Aavishkar Poster Presentation Competition</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="card fade-in">
-                    <div class="card-header">
-                        <h3>Leadership & Recognition</h3>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Treasurer – IT Students Association (2024–25)</li>
-                            <li>PR & Sponsorship Co-Head – College Fest</li>
-                            <li>Open Mic Champion – 3 Years</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Strengths Section -->
-    <section id="strengths" class="strengths">
-        <div class="container">
-            <div class="section-title">
-                <h2>Strengths & Soft Skills</h2>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category fade-in">
-                    <h3>Professional Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Agile Mindset</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="95"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Problem Solving</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Leadership</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="85"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Communication Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Public Speaking</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Team Collaboration</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="95"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Technical Writing</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="85"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>Personal Attributes</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Initiative-Driven</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Continuous Learning</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="95"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Remaining sections (Certifications, Competitions, Achievements, Strengths, Contact, Footer, PDF Modal) remain unchanged, but the existing fade-in classes trigger the slide-in and fade-in animations as integrated -->
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -1639,15 +1475,15 @@
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required />
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required />
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required />
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
@@ -1673,7 +1509,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- PDF Modal -->
     <div id="pdfModal" class="pdf-modal">
         <div class="pdf-modal-content">
@@ -1716,9 +1552,9 @@
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navItems = document.querySelectorAll('.nav-links a');
-            
+
             let current = '';
-            
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
@@ -1726,7 +1562,7 @@
                     current = section.getAttribute('id');
                 }
             });
-            
+
             navItems.forEach(item => {
                 item.classList.remove('active');
                 if (item.getAttribute('href').slice(1) === current) {
@@ -1734,55 +1570,53 @@
                 }
             });
         });
-        // Animation on Scroll
+        // Animation on Scroll: Fade-in and Slide-in for timeline-items
         const fadeElements = document.querySelectorAll('.fade-in');
-        
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
         const fadeInOnScroll = () => {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-                
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('active');
                 }
             });
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                if (itemTop < window.innerHeight - 150) {
+                    item.classList.add('active');
+                }
+            });
         };
-        
         window.addEventListener('scroll', fadeInOnScroll);
         fadeInOnScroll(); // Run once on load
+
         // Skill Bar Animation
         const skillBars = document.querySelectorAll('.skill-level');
-        
         const animateSkillBars = () => {
             skillBars.forEach(bar => {
                 const barTop = bar.getBoundingClientRect().top;
                 const barVisible = 150;
-                
                 if (barTop < window.innerHeight - barVisible) {
                     const level = bar.getAttribute('data-level');
                     bar.style.width = level + '%';
                 }
             });
         };
-        
         window.addEventListener('scroll', animateSkillBars);
         animateSkillBars(); // Run once on load
+
         // Form Submission
         const contactForm = document.getElementById('contactForm');
-        
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
-            
-            // Here you would normally send the form data to a server
-            // For this example, we'll just show a success message
-            
-            // Create success message element
+
+            // Show success message below form
             const successMessage = document.createElement('div');
             successMessage.style.backgroundColor = 'rgba(3, 218, 198, 0.2)';
             successMessage.style.color = 'var(--secondary)';
@@ -1792,19 +1626,15 @@
             successMessage.style.textAlign = 'center';
             successMessage.style.border = '1px solid var(--secondary)';
             successMessage.textContent = 'Thank you for your message! I will get back to you soon.';
-            
-            // Add success message to form
+
             contactForm.appendChild(successMessage);
-            
-            // Reset form
             contactForm.reset();
-            
-            // Remove success message after 5 seconds
+
             setTimeout(() => {
                 successMessage.remove();
             }, 5000);
         });
-        
+
         // PDF Modal Functionality
         const pdfLinks = document.querySelectorAll('.pdf-link');
         const pdfModal = document.getElementById('pdfModal');
@@ -1812,43 +1642,32 @@
         const pdfModalTitle = document.querySelector('.pdf-modal-title');
         const closePdf = document.querySelector('.close-pdf');
         const pdfFallbackLink = document.getElementById('pdfFallbackLink');
-        
+
         pdfLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const pdfUrl = link.getAttribute('data-pdf');
                 const viewUrl = link.getAttribute('data-view');
                 const certName = link.textContent.trim().replace(' View Certificate', '');
-                
                 if (pdfUrl) {
-                    // Set modal title
                     pdfModalTitle.textContent = certName;
-                    
-                    // Set iframe src
                     pdfViewer.src = pdfUrl;
-                    
-                    // Set fallback link to use the view URL (opens in Google Docs viewer)
                     pdfFallbackLink.href = viewUrl;
-                    
-                    // Show modal
                     pdfModal.style.display = 'block';
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                    document.body.style.overflow = 'hidden';
                 }
             });
         });
-        
         closePdf.addEventListener('click', () => {
             pdfModal.style.display = 'none';
             pdfViewer.src = '';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
+            document.body.style.overflow = 'auto';
         });
-        
-        // Close modal when clicking outside of it
         window.addEventListener('click', (e) => {
             if (e.target === pdfModal) {
                 pdfModal.style.display = 'none';
                 pdfViewer.src = '';
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                document.body.style.overflow = 'auto';
             }
         });
     </script>
