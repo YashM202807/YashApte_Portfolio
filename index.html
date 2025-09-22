@@ -510,43 +510,6 @@
             background-position: center;
             position: relative;
         }
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        .project-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--surface);
-            color: var(--primary);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        .project-links a:hover {
-            background: var(--primary);
-            color: var(--background);
-            transform: scale(1.1);
-        }
         .project-content {
             padding: 1.5rem;
             flex-grow: 1;
@@ -1213,40 +1176,35 @@
             <div class="cards-container">
                 <div class="project-card fade-in">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#"><i class="fab fa-github"></i></a>
-                                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">EduCare – Inclusive Learning Platform</h3>
-                        <p class="project-description">Voice-enabled education system using JavaScript SpeechSynthesis and Python's Speech libraries</p>
+                        <p class="project-description">EduCare is a revolutionary platform designed specifically for rural area students and visually impaired students. Built using HTML, CSS, JavaScript, and Bootstrap, this platform focuses on accessibility and inclusive education.</p>
+                        <p class="project-description">All operations on the platform are key-enabled, allowing students to navigate and interact with the system using only keyboard commands. While students might initially need assistance, after just one or two training sessions, they can use the website independently.</p>
+                        <p class="project-description">The platform is completely blind-friendly, with every input field and navigation element providing audio feedback. For navigation assistance, we implemented a voice-enabled chatbot that guides users through the website. The major technological breakthrough was leveraging JavaScript's speech synthesis functionality to create an immersive audio experience for visually impaired users.</p>
                         <div class="project-tags">
                             <span class="tag">JavaScript</span>
-                            <span class="tag">Python</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">Bootstrap</span>
                             <span class="tag">Accessibility</span>
-                            <span class="tag">Web Development</span>
+                            <span class="tag">Speech Synthesis</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-card fade-in">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#"><i class="fab fa-github"></i></a>
-                                <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                            </div>
-                        </div>
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Digital Forgery Detection System</h3>
-                        <p class="project-description">Built with OpenCV, ML classifiers, and CNN pretrained models to detect document/image tampering</p>
+                        <p class="project-description">Our Digital Forgery Detection System is an advanced security solution designed to identify and authenticate digital documents by detecting any signs of tampering or forgery. This system employs cutting-edge technology to ensure document integrity and security.</p>
+                        <p class="project-description">The system utilizes several pretrained models to analyze documents for inconsistencies and manipulations. One of the key technologies we implemented is the mmfusion model, which combines multiple analysis techniques to improve detection accuracy.</p>
+                        <p class="project-description">We incorporated an Edge Analysis System that examines the boundaries and transitions within the document to identify any irregularities that might indicate tampering. Additionally, the system generates heat maps that visually highlight areas of potential forgery, making it easier for users to identify suspicious regions.</p>
+                        <p class="project-description">By combining these technologies, our system provides a comprehensive approach to digital document authentication, offering robust protection against various forms of digital forgery.</p>
                         <div class="project-tags">
-                            <span class="tag">OpenCV</span>
                             <span class="tag">Machine Learning</span>
-                            <span class="tag">CNN</span>
+                            <span class="tag">mmfusion</span>
+                            <span class="tag">Edge Analysis</span>
+                            <span class="tag">Heat Maps</span>
                             <span class="tag">Cybersecurity</span>
                         </div>
                     </div>
@@ -1304,33 +1262,53 @@
         </div>
     </section>
     <!-- Events Section -->
-    <section id="events" class="events">
-        <div class="container">
-            <div class="section-title">
-                <h2>Industry Events & Workshops</h2>
+<section id="events" class="events">
+    <div class="container">
+        <div class="section-title">
+            <h2>Industry Events & Workshops</h2>
+        </div>
+        <div class="cards-container">
+            <div class="event-card fade-in">
+                <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="event-content">
+                    <h3 class="event-title">Cybersecurity Workshop at TalaKunchi Networks</h3>
+                    <p class="event-description">An action-packed Saturday with two top-tier sessions on advanced cybersecurity topics, hosted at TalaKunchi Networks Pvt Ltd, Andheri, Mumbai.</p>
+                    <div class="event-details">
+                        <h4>Sessions that stole the show:</h4>
+                        <ul>
+                            <li><strong>Smart Networks and Safe Systems</strong> by Seep Singhal: A session exploring how smart networks, Zero Trust architecture, and automation work together to proactively detect and neutralize cyber threats.</li>
+                            <li><strong>Developing custom malware</strong> by Saumitra Kulkarni: A deep dive into offensive security, showcasing custom malware, C2 tactics, and self-built IoT tools for real-world software and hardware intrusions.</li>
+                        </ul>
+                    </div>
+                    <div class="event-acknowledgments">
+                        <h4>Special thanks to:</h4>
+                        <p>TalaKunchi Networks Pvt Ltd for the incredible venue</p>
+                    </div>
+                </div>
             </div>
-            <div class="cards-container">
-                <div class="event-card fade-in">
-                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
-                    <div class="event-content">
-                        <h3 class="event-title">Cybersecurity Workshop at TalaKunchi Networks</h3>
-                        <p class="event-description">An action-packed Saturday with two top-tier sessions on advanced cybersecurity topics, hosted at TalaKunchi Networks Pvt Ltd, Andheri, Mumbai.</p>
-                        <div class="event-details">
-                            <h4>Sessions that stole the show:</h4>
-                            <ul>
-                                <li><strong>Smart Networks and Safe Systems</strong> by Seep Singhal: A session exploring how smart networks, Zero Trust architecture, and automation work together to proactively detect and neutralize cyber threats.</li>
-                                <li><strong>Developing custom malware</strong> by Saumitra Kulkarni: A deep dive into offensive security, showcasing custom malware, C2 tactics, and self-built IoT tools for real-world software and hardware intrusions.</li>
-                            </ul>
-                        </div>
-                        <div class="event-acknowledgments">
-                            <h4>Special thanks to:</h4>
-                            <p>TalaKunchi Networks Pvt Ltd for the incredible venue</p>
-                        </div>
+            
+            <div class="event-card fade-in">
+                <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="event-content">
+                    <h3 class="event-title">GitTogether Workshop</h3>
+                    <p class="event-description">Had an incredible experience attending GitTogether Mumbai on 20th September, 2025! The half-day session was packed with hands-on workshops and insightful talks that enhanced my development workflow and productivity.</p>
+                    <div class="event-details">
+                        <h4>Sessions that stole the show:</h4>
+                        <ul>
+                            <li><strong>GitHub Copilot workshop</strong> by Ali Mustufa – Super helpful in understanding how AI can boost productivity and streamline coding processes.</li>
+                            <li><strong>Gemini CLI workshop</strong> by Prashant R Dalai – Learned practical tips to streamline workflows and enhance command-line productivity.</li>
+                            <li><strong>Smarter Docs with GitHub Actions</strong> by Hridyesh Bisht – Eye-opening session on automating documentation efficiently and maintaining up-to-date project documentation.</li>
+                        </ul>
+                    </div>
+                    <div class="event-acknowledgments">
+                        <h4>Special thanks to:</h4>
+                        <p>GitHub Together and the organizers for putting together such a valuable session. Definitely left with new skills, ideas, and motivation to contribute to open-source!</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
@@ -1403,7 +1381,7 @@
                     <div class="skill-item">
                         <div class="skill-name">
                             <span>Cybersecurity</span>
-                            <span>85%</span>
+                            <span>75%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-level" data-level="85"></div>
@@ -1411,22 +1389,14 @@
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span>Data Analytics</span>
+                            <span>UI/UX Development</span>
                             <span>80%</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-level" data-level="80"></div>
                         </div>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>AWS</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" data-level="70"></div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
